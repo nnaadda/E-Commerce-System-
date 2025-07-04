@@ -1,0 +1,70 @@
+/** Author: Nada Adel **/
+/** Class: Cart **/
+import java.util.ArrayList;
+import java.util.List;
+
+public class Cart {
+
+        List<SingleItem> carts=new ArrayList<>();
+        List<Product>products;
+        public Cart(List<Product> products){
+            this.products=products;
+        }
+        public void addToCart(String name, int quantity) {
+            for(Product p:products){
+                if (p.name.equalsIgnoreCase(name)) {
+                    if (p.isExpired()) {
+                        System.out.println("Cannot add " + p.name + ": product is expired.");
+                        return;
+                    } if(p.quantity>=quantity){
+                        p.quantity= p.quantity-quantity;
+                        carts.add(new SingleItem(p, quantity));
+                        System.out.println("Added " + quantity + " x " + p.name);
+                    } else {
+                        System.out.println("Only " + p.quantity + " left for " + p.name);
+                    }
+                    return;
+                }
+            }
+            System.out.println("Product " + name + " not found.");
+
+        }
+
+        public boolean isEmpty() {
+            return carts.size() == 0;
+        }
+
+        public double getSubtotal() {
+            double sum = 0;
+            for (SingleItem item : carts) {
+                sum += item.getTotalPrice();
+            }
+            return sum;
+        }
+
+        public double getShippingFees() {
+            double sum = 0;
+            for (SingleItem item : carts) {
+                sum += item.getShippingFee();
+            }
+            return sum;
+        }
+
+        public boolean hasExpiredItems() {
+            for (SingleItem item : carts) {
+                if (item.product.isExpired()) return true;
+            }
+            return false;
+        }
+
+        public void showCart() {
+            System.out.println("\n Cart Items:");
+            for (SingleItem item : carts) {
+                System.out.println("- " + item.product.name + " x " + item.quantity);
+            }
+        }
+
+        public void clearCart() {
+            carts.clear();
+        }
+    }
