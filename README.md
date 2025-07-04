@@ -67,3 +67,48 @@ cart.addToCart("Scratch Card", 1);
 
 Customer customer = new Customer(10000.0, cart);
 customer.checkout();
+
+
+Here's how you can include the output in your `README.md` file under an **Example Output** section:
+
+---
+
+```markdown
+## 🧾 Example Console Output
+
+```
+
+Added 2 x Cheese
+Cannot add Biscuits: product is expired.
+Cannot add TV: product is expired.
+Cannot add Scratch Card: product is expired.
+Cannot add Milk: product is expired.
+Product Camera not found.
+
+Cart Items:
+
+* Cheese x 2
+
+\*\* Shipment notice \*\*
+Item               Weight
+-------------------------
+
+* Cheese | Weight: 2.0kg
+* Cheese | Weight: 2.0kg
+  Total package weight: 4.0kg
+
+\*\* Checkout receipt \*\*
+2x Cheese       200.0
+---------------------
+
+Subtotal         200.0
+Shipping         24.0
+Amount           224.0
+Balance Left     11776.0
+END.
+
+```
+
+---
+
+```
