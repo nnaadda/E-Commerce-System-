@@ -107,8 +107,4 @@ Amount           224.0
 Balance Left     11776.0
 END.
 
-```
 
----
-
-```
