@@ -1,0 +1,38 @@
+/** Author: Nada Adel **/
+/** Class: Main **/
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+
+        List<Product> productList = new ArrayList<>();
+
+        Product p1 = new Product(100.0, 50, "Cheese", "2027-12-12", true, 2.0);     // Valid, in stock, shippable
+        Product p2 = new Product(30.0, 0, "Biscuits", "2023-01-01", false, 0.0);    // Expired and out of stock
+        Product p3 = new Product(2000.0, 5, "TV", "", true, 10.0);                  // Valid, in stock, no expiry
+        Product p4 = new Product(10.0, 10, "Scratch Card", "", false, 0.0);         // Valid, non-shippable
+        Product p5 = new Product(500.0, 1, "Milk", "2025-01-01", true, 1.5);        // Expired
+
+        productList.add(p1);
+        productList.add(p2);
+        productList.add(p3);
+        productList.add(p4);
+        productList.add(p5);
+
+        Cart cart = new Cart(productList);
+
+        Customer customer = new Customer(12000.0, cart);
+
+        cart.addToCart("Cheese", 2);        //  succeed
+        cart.addToCart("Biscuits", 1);      //  fail: expired and out of stock
+        cart.addToCart("TV", 1);            //  succeed
+        cart.addToCart("Scratch Card", 2);  //  succeed
+        cart.addToCart("Milk", 1);          //  fail: expired
+        cart.addToCart("Camera", 1);        //  fail: not found
+
+        cart.showCart();
+
+        customer.checkout();
+    }
+}
