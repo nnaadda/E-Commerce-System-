@@ -1,0 +1,8 @@
+/** Author: Nada Adel **/
+/** Interface: Shippableitem **/
+
+public interface Shippableitem {
+        String getName();
+        double getWeight();
+
+}
