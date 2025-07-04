@@ -1,0 +1,21 @@
+/** Author: Nada Adel **/
+/** Class: SingleItem **/
+public class SingleItem {
+        public Product product;
+        int quantity;
+
+        public SingleItem (Product product, int quantity) {
+            this.product = product;
+            this.quantity = quantity;
+        }
+        public double getTotalPrice() {
+            return product.price * quantity;
+        }
+
+        public double getShippingFee() {
+            return product.shippable ? product.weight * 12.0 : 0.0;
+        }
+
+    }
+
+
