@@ -1,0 +1,38 @@
+/** Author: Nada Adel **/
+/** Class: Product **/
+import java.time.LocalDate;
+import java.util.Date;
+
+public class Product implements Shippableitem {
+    double price;
+    int quantity;
+    String name;
+    String expiryDate;
+
+    boolean shippable;
+    double weight;
+
+
+    Product(double price, int quantity, String name, String expiryDate, boolean shippable, double weight) {
+        this.price = price;
+        this.quantity = quantity;
+        this.name = name;
+        this.expiryDate = expiryDate;
+        this.shippable = shippable;
+        this.weight = weight;
+
+    }
+
+    public boolean isExpired() {
+        return expiryDate != null &&  expiryDate.compareTo(String.valueOf(LocalDate.now())) < 0;
+    }
+    public String getName() {
+        return name;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+}
+
+
