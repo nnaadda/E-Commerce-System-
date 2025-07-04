@@ -1,5 +1,6 @@
 /** Author: Nada Adel **/
 /** Class: SingleItem **/
+
 public class SingleItem {
         public Product product;
         int quantity;
